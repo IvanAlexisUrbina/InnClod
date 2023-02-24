@@ -8,7 +8,7 @@
         <ul class=" navbar-right">
             <li class="nav-item dropdown open " style="padding-left: 15px;">
             <a href="javascript:;" class="user-profile dropdown-toggle " aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                <img src="build/images/User.png" id="imagenCircular" class="img-circle bg-white" alt=""><span class="text-white">USUARIO</span>
+                <img src="build/images/User.png" id="imagenCircular" class="img-circle bg-white" alt=""><span class="text-white"><?= $_SESSION['nameUser']?> </span>
             </a>
             <div class="dropdown-menu dropdown-usermenu pull-right" style="color:white" aria-labelledby="navbarDropdown">
             <a class="dropdown-item"  href="<?php echo getUrl("Access","Access","logOut")?>"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesion</a>
