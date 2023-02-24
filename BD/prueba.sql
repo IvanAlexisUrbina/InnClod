@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-10-2022 a las 03:57:52
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 22-02-2023 a las 22:19:54
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,168 +18,104 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `prueba`
+-- Base de datos: `pruebabd`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `capacitacion`
+-- Estructura de tabla para la tabla `doc_documento`
 --
 
-CREATE TABLE `capacitacion` (
-  `capa_id` int(11) NOT NULL,
-  `capa_nombre` varchar(30) NOT NULL,
-  `capa_descripcion` varchar(60) NOT NULL,
-  `capa_cupo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `capacitacion`
---
-
-INSERT INTO `capacitacion` (`capa_id`, `capa_nombre`, `capa_descripcion`, `capa_cupo`) VALUES
-(1, 'tecnico2134123', '2341243', 10);
+CREATE TABLE `doc_documento` (
+  `DOC_ID` int(11) NOT NULL,
+  `DOC_NOMBRE` varchar(60) NOT NULL,
+  `DOC_CODIGO` int(11) NOT NULL,
+  `DOC_CONTENIDO` varchar(4000) NOT NULL,
+  `DOC_ID_TIPO` int(11) NOT NULL,
+  `DOC_ID_PROCESO` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cupo`
+-- Estructura de tabla para la tabla `pro_proceso`
 --
 
-CREATE TABLE `cupo` (
-  `id_cupo` int(11) NOT NULL,
-  `capa_id` int(11) NOT NULL,
-  `usu_id` int(10) NOT NULL,
-  `capa_cantidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `cupo`
---
-
-INSERT INTO `cupo` (`id_cupo`, `capa_id`, `usu_id`, `capa_cantidad`) VALUES
-(1, 1, 1, 1),
-(2, 1, 1, 1),
-(3, 1, 1, 1);
+CREATE TABLE `pro_proceso` (
+  `PRO_ID` int(11) NOT NULL,
+  `PRO_PREFIJO` varchar(20) NOT NULL,
+  `PRO_NOMBRE` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_rol`
+-- Estructura de tabla para la tabla `tip_tipo_doc`
 --
 
-CREATE TABLE `tbl_rol` (
-  `rol_id` int(100) NOT NULL,
-  `rol_nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `tbl_rol`
---
-
-INSERT INTO `tbl_rol` (`rol_id`, `rol_nombre`) VALUES
-(1, 'administrador'),
-(2, 'usuario');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_usuario`
---
-
-CREATE TABLE `tbl_usuario` (
-  `usu_id` int(100) NOT NULL,
-  `usu_nombre` varchar(50) NOT NULL,
-  `usu_apellido` varchar(50) NOT NULL,
-  `usu_correo` varchar(50) NOT NULL,
-  `usu_telefono` varchar(50) NOT NULL,
-  `usu_pais_residencia` varchar(10) DEFAULT NULL,
-  `usu_residencia` varchar(256) NOT NULL,
-  `usu_direccion` varchar(255) NOT NULL,
-  `usu_tipo_documento` varchar(50) NOT NULL,
-  `usu_documento` varchar(50) NOT NULL,
-  `usu_contraseña` varchar(255) NOT NULL,
-  `usu_termino` int(10) NOT NULL,
-  `rol_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `tbl_usuario`
---
-
-INSERT INTO `tbl_usuario` (`usu_id`, `usu_nombre`, `usu_apellido`, `usu_correo`, `usu_telefono`, `usu_pais_residencia`, `usu_residencia`, `usu_direccion`, `usu_tipo_documento`, `usu_documento`, `usu_contraseña`, `usu_termino`, `rol_id`) VALUES
-(1, 'nombre ', 'apellido ', 'ivan@gmail.com ', '2134123 ', 'werqw', 'waer', 'a', 'Cédula ciudadania ', '2341234 ', '$2y$10$C8zSxoG/5NwKg17ilutP2.mi8KjKNL1wyfbtr21P7TD9XASu7MYpi', 1, 1);
+CREATE TABLE `tip_tipo_doc` (
+  `TIP_ID` int(11) NOT NULL,
+  `TIP_NOMBRE` varchar(60) NOT NULL,
+  `TIP_PREFIJO` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `capacitacion`
+-- Indices de la tabla `doc_documento`
 --
-ALTER TABLE `capacitacion`
-  ADD PRIMARY KEY (`capa_id`);
+ALTER TABLE `doc_documento`
+  ADD PRIMARY KEY (`DOC_ID`),
+  ADD KEY `DOC_ID_TIPO` (`DOC_ID_TIPO`,`DOC_ID_PROCESO`),
+  ADD KEY `DOC_ID_PROCESO` (`DOC_ID_PROCESO`);
 
 --
--- Indices de la tabla `cupo`
+-- Indices de la tabla `pro_proceso`
 --
-ALTER TABLE `cupo`
-  ADD PRIMARY KEY (`id_cupo`),
-  ADD KEY `capa_id` (`capa_id`),
-  ADD KEY `usu_id` (`usu_id`);
+ALTER TABLE `pro_proceso`
+  ADD PRIMARY KEY (`PRO_ID`);
 
 --
--- Indices de la tabla `tbl_rol`
+-- Indices de la tabla `tip_tipo_doc`
 --
-ALTER TABLE `tbl_rol`
-  ADD PRIMARY KEY (`rol_id`);
-
---
--- Indices de la tabla `tbl_usuario`
---
-ALTER TABLE `tbl_usuario`
-  ADD PRIMARY KEY (`usu_id`),
-  ADD KEY `rol_id` (`rol_id`);
+ALTER TABLE `tip_tipo_doc`
+  ADD PRIMARY KEY (`TIP_ID`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `capacitacion`
+-- AUTO_INCREMENT de la tabla `doc_documento`
 --
-ALTER TABLE `capacitacion`
-  MODIFY `capa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `doc_documento`
+  MODIFY `DOC_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cupo`
+-- AUTO_INCREMENT de la tabla `pro_proceso`
 --
-ALTER TABLE `cupo`
-  MODIFY `id_cupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `pro_proceso`
+  MODIFY `PRO_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tbl_usuario`
+-- AUTO_INCREMENT de la tabla `tip_tipo_doc`
 --
-ALTER TABLE `tbl_usuario`
-  MODIFY `usu_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `tip_tipo_doc`
+  MODIFY `TIP_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `cupo`
+-- Filtros para la tabla `doc_documento`
 --
-ALTER TABLE `cupo`
-  ADD CONSTRAINT `cupo_ibfk_1` FOREIGN KEY (`capa_id`) REFERENCES `capacitacion` (`capa_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cupo_ibfk_2` FOREIGN KEY (`usu_id`) REFERENCES `tbl_usuario` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tbl_usuario`
---
-ALTER TABLE `tbl_usuario`
-  ADD CONSTRAINT `tbl_usuario_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `tbl_rol` (`rol_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `doc_documento`
+  ADD CONSTRAINT `doc_documento_ibfk_1` FOREIGN KEY (`DOC_ID_PROCESO`) REFERENCES `pro_proceso` (`PRO_ID`),
+  ADD CONSTRAINT `doc_documento_ibfk_2` FOREIGN KEY (`DOC_ID_TIPO`) REFERENCES `tip_tipo_doc` (`TIP_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
