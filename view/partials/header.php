@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shorcut icon" href="build/images/icono.ico">
 
-    <title>Cafetería</title>
+    <title>INNCLOD</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
@@ -20,6 +20,6 @@
     <link href="vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
     <!-- Custom Theme Style -->
     <link href="build/css/custom.css" rel="stylesheet">
-    <link href="build/css/cafe.css" rel="stylesheet">
+    <link href="build/css/styles.css" rel="stylesheet">
 
 </head>
