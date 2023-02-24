@@ -40,9 +40,9 @@ class AccessController
         $usu_correo = $_POST['usu_correo'];
         $usu_contraseña = $_POST['usu_contraseña'];
 
-        $selectedPass = "SELECT usu_contraseña FROM tbl_usuario WHERE usu_correo='$usu_correo' ";
+        $selectedPass = "SELECT usu_contraseña FROM tbl_usuario WHERE usu_correo= ? ";
 
-        $passord_V = $obj->consult($selectedPass);
+        $passord_V = $obj->consult($selectedPass,array($usu_correo));
 
       
 //pregunta si me llega mas de una consulta
@@ -54,15 +54,14 @@ class AccessController
 //si concuerda la contraseña seleccioneme ese usuario y redireccionalo a ADMIN O USUARIO
             if (password_verify($usu_contraseña, $hash_verify_db)) {
                 
-                $sqlUser = "SELECT usu_id, usu_nombre, usu_apellido, usu_correo, usu_contraseña, rol_id FROM tbl_usuario WHERE usu_correo='" . $usu_correo . "' AND usu_contraseña='" . $hash_verify_db . "'";
-                $usuario = $obj->consult($sqlUser);
+                $sqlUser = "SELECT usu_id, usu_nombre, usu_apellido, usu_correo, usu_contraseña FROM tbl_usuario WHERE usu_correo= ? AND usu_contraseña='" . $hash_verify_db . "'";
+                $usuario = $obj->consult($sqlUser,array($usu_correo));
                
                 if (mysqli_num_rows($usuario) > 0) {
                     foreach ($usuario as $user) {
 
                         $_SESSION['nameUser'] = $user['usu_nombre'];
                         $_SESSION['surnameUser'] = $user['usu_apellido'];
-                        $_SESSION['rolId']=$user['rol_id'];
                         $_SESSION['idUser'] = $user['usu_id'];
                         $_SESSION['auth'] = "ok";
                     }
