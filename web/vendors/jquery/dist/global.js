@@ -4,14 +4,14 @@ $(document).ready(function () {
     var estado = $("#logo").attr("data-estado");
 
     if (estado == 1) {
-      $("#logo").attr("src", "build/images/logok.png");
+      $("#logo").attr("src", "build/images/logo.png");
       $("#logo").attr("width", "60px");
       $("#logo").attr("style", "");
       $("#logo").attr("data-estado", "2");
     } else {
       $("#logo").attr("src", "build/images/icono.jpg");
       $("#logo").attr("width", "100px");
-      $("#logo").attr("style", "margin-left:44px");
+      $("#logo").attr("style", "margin-left:61px");
       $("#logo").attr("data-estado", "1");
     }
   });
@@ -44,7 +44,7 @@ $(document).ready(function () {
     });
   });
 
-  // boton para editar en inventario
+ 
     $(document).on('click', '#editar', function () {
       var url = $(this).attr('data-url');
       var datos = $(this).val();
@@ -60,7 +60,7 @@ $(document).ready(function () {
   
 
   /////////////////////////////////////////////////////////
-// boton para editar en inventario
+
 $(document).on('click', '#ventas', function () {
   var url = $(this).attr('data-url');
   $.ajax({
@@ -72,7 +72,7 @@ $(document).on('click', '#ventas', function () {
     }
   });
 });
-// boton para editar en inventario
+
 $(document).on('click', '#eliminar', function () {
   var url = $(this).attr('data-url');
   $.ajax({
@@ -113,49 +113,7 @@ $(document).on('click', '#eliminar', function () {
 
       });
   });
-        ///validacion por medio de CHANGE evento
-        $(document).on('blur', '#inputVenta', function () {
-
-          var vender=$("#inputVenta").val();
-          var stock=$("#prod_stock2").val();
-
-          if(vender<=stock && vender >0){
-              // var boton = $("#botonVenta").removeAttr("disabled","");
-          }else{
-              alert("No hay cupos");
-              // var boton = $("#botonVenta").attr("disabled", "");
-          }
-
-          });
-
   
-    $(document).on("submit", "#actualizarinventario", function() {
-      event.preventDefault();
-      swal({
-          title: '¿Desea actualizar esta capacitacion?',
-          text: 'Actualizara los campos que haya modificado',
-          type: 'info',
-          icon: 'info',
-          buttons: {
-              confirm: {
-                  text: 'Actualizar',
-                  className: 'btn btn-primary'
-              },
-
-              cancel: {
-                  visible: true,
-                  text: "Cancelar",
-                  className: 'btn btn-danger'
-              }
-
-          }
-      }).then((Delete) => {
-          if (Delete) {
-              $(this).submit();
-          }
-
-      });
-  });
 })
 
 
