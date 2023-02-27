@@ -8,20 +8,20 @@ Para ejecutar este sistema, necesitarás tener instalados los siguientes compone
 
 XAMPP 7.4.23 o superior (que incluye Apache, MySQL y PHP)
 Navegador web (como Google Chrome o Mozilla Firefox)
-Instalación y configuración
+Instalación y configuración<br>
 Para instalar y configurar el sistema, sigue los siguientes pasos:<br>
 
-Descarga el código fuente del sistema desde el repositorio de GitHub.<br>
-Copia los archivos del sistema en la carpeta "htdocs" de XAMPP. Por defecto, la carpeta "htdocs" se encuentra en la ruta "C:\xampp\htdocs" en Windows o "/Applications/XAMPP/htdocs" en macOS.<br>
-Abre XAMPP Control Panel y asegúrate de que los servicios Apache y MySQL estén activos.<br>
-Abre tu navegador web y accede a la URL "http://localhost/phpmyadmin".<br>
-Crea una nueva base de datos llamada "pruebabd".<br>
-Importa el archivo "pruebabd.sql" que se encuentra en la carpeta "BD" del sistema.<br>
+-Descarga el código fuente del sistema desde el repositorio de GitHub.<br>
+-Copia los archivos del sistema en la carpeta "htdocs" de XAMPP. Por defecto, la carpeta "htdocs" se encuentra en la ruta "C:\xampp\htdocs" en Windows o "/Applications/XAMPP/htdocs" en macOS.<br>
+-Abre XAMPP Control Panel y asegúrate de que los servicios Apache y MySQL estén activos.<br>
+-Abre tu navegador web y accede a la URL "http://localhost/phpmyadmin".<br>
+-Crea una nueva base de datos llamada "pruebabd".<br>
+-Importa el archivo "pruebabd.sql" que se encuentra en la carpeta "BD" del sistema.<br>
 
 USO DEL SISTEMA
 Para utilizar el sistema, sigue los siguientes pasos:<br>
 
-1-Abre tu navegador web y accede a la URL "http://localhost/InnClod".<br>
+1-Abre tu navegador web y accede a la URL "http://localhost/InnClod/web/".<br>
 2-Ingresa el usuario "iaurbina04@misena.edu.co" y contraseña "123456"  para iniciar sesión.<br>
 3-En la página principal del sistema, verás un modulo que se llama registro documentos, presiona ahi y te llevara a la tabla con todos los registros de documentos existentes.<br>
 4-Utiliza el botón "Registrar" para crear un nuevo registro de documento. Ingresa el nombre, tipo, proceso, contenido del documento el codigo se actuliza solo mediante 5-lo vas cambiando esta acción se ejecuta con Jquery y presiona "Registrar".<br>
