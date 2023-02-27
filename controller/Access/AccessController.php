@@ -4,34 +4,6 @@ include_once '../model/Access/AccessModel.php';
 
 class AccessController
 {
-    //Visualizar la vista de login
-    public function getLogin()
-    {
-        include_once '../view/Registro/registrovista.php';
-    }
-    //Regitrar usuarios en la base de datos
-    public function getInsert()
-    {
-        $obj = new AccessModel();
-
-        extract($_POST);
-
-        $hash = password_hash($_POST['usu_contraseña'], PASSWORD_BCRYPT);
-
-        $usu_id = $obj->autoIncrement("tbl_usuario", "usu_id");
-
-        $sql = "INSERT INTO tbl_usuario VALUES('$usu_id ', '$usu_nombre ','$usu_apellido ',
-        '$usu_correo ', '$usu_telefono ','$usu_pais_residencia','$usu_residencia','$usu_direccion',
-        '$usu_tipo_documento ', '$usu_documento ','$hash','$usu_termino',2)";
-        $execution = $obj->insert($sql);
-        if ($execution) {
-             redirect('Login.php');
-          
-        } else {
-          //  echo $sql;
-            echo "Ups ocurrio un error";
-        }
-    }
     //acceso en el login
     public function login()
     {
@@ -42,16 +14,14 @@ class AccessController
 
         $selectedPass = "SELECT usu_contraseña FROM tbl_usuario WHERE usu_correo= ? ";
 
-        $passord_V = $obj->consult($selectedPass,array($usu_correo));
-
-      
+        $passord_V = $obj->consult($selectedPass,array($usu_correo));  
 //pregunta si me llega mas de una consulta
         if (mysqli_num_rows($passord_V) > 0) {
 
             foreach ($passord_V as $pass) {
                 $hash_verify_db = $pass['usu_contraseña'];
             }
-//si concuerda la contraseña seleccioneme ese usuario y redireccionalo a ADMIN O USUARIO
+//si concuerda la contraseña seleccioneme ese usuario y redireccionalo
             if (password_verify($usu_contraseña, $hash_verify_db)) {
                 
                 $sqlUser = "SELECT usu_id, usu_nombre, usu_apellido, usu_correo, usu_contraseña FROM tbl_usuario WHERE usu_correo= ? AND usu_contraseña='" . $hash_verify_db . "'";
