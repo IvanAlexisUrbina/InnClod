@@ -11,3 +11,10 @@
 .divmodal{
     border: none;
 }
+.dataTables_paginate{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.dataTables_paginate a:hover {
+font-weight: bolder;
+}
