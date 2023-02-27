@@ -1,76 +1,58 @@
-body, html {
-    height: 100%;
+body {
+    background: white;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 10%;
 }
 
-body{
-	background-color: transparent;
-	color: white;
-	margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background: #2f3542;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    /* No Scrollbar */
-}
-
-.form-box {
-    width: 50%;
+form {
+    width: 320px;
+    margin: 0 auto;
     padding: 40px;
-    background: #191919;
-    text-align: center;
-}
-.form-title {
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 500;
-	
-}
-.form-box input[type="text"],.form-box select[type="text"], .form-box input[type="email"],.form-box input[type="password"]{
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #3742fa;
-    padding: 14px 10px;
-    width: 80%;
-    outline: none;
-    color: white;
-    border-radius: 25px;
-    transition: 0.25s;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.form-box input[type="text"]:focus,.form-box input[type="email"]:focus,.form-box input[type="password"]:focus,.form-box select[type="text"]:focus {
+h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: orange;
+}
+
+input[type="text"],
+input[type="password"] {
     width: 100%;
-    border-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
 }
 
-.form-box button[type="submit"] {
-    border: 0;
-    background: #5352ed;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #3742fa;
-    padding: 14px 40px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s;
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: orange;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.form-box button[type="submit"]:hover {
-    background: none;
+input[type="submit"]:hover {
+    background: white;
+    color: black;
+    border: 1px solid black;
 }
-#usu_tipo_documento{ 
-	color:white;
-	background-color: #191919;
+
+#usu_correo {
+    padding-left: 30px;
 }
-#usu_tipo_documento option{
-	color: white;
-} 
+
+#usu_contraseña {
+    padding-left: 30px;
+}
