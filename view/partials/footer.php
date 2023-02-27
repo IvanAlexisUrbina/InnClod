@@ -22,3 +22,6 @@
 <script src="vendors/fastclick/lib/fastclick.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="build/js/custom.min.js"></script>
+
+<!-- validations -->
+<script src="vendors/jquery/dist/validations.js"></script>
