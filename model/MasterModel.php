@@ -12,9 +12,29 @@
             $result=mysqli_query($this->getConnect(),$sql);
             return $result;
         }
-        public function delete($sql){
-            $result=mysqli_query($this->getConnect(),$sql);
-            return $result;
+        
+        public function delete($table, $condition, $params = array()){
+            $stmt = $this->getConnect()->prepare("DELETE FROM $table WHERE $condition");
+            if (!empty($params)) {
+                $types = "";
+                $params_ref = array();
+                foreach ($params as $param) {
+                    if (is_int($param)) {
+                        $types .= "i";
+                    } elseif (is_float($param)) {
+                        $types .= "d";
+                    } elseif (is_string($param)) {
+                        $types .= "s";
+                    } else {
+                        $types .= "b";
+                    }
+                    $params_ref[] = &$param;
+                }
+                array_unshift($params_ref, $types);
+                call_user_func_array(array($stmt, 'bind_param'), $params_ref);
+            }
+            $stmt->execute();
+            return $stmt->affected_rows;
         }
 
         public function consult($sql, $params = array()){
