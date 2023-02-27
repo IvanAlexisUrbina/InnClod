@@ -16,6 +16,45 @@ $(document).ready(function () {
     }
   });
 
+  //form register document
+  $(document).on("change", "#TIP_ID, #PRO_ID", function() {
+    let type = $("#TIP_ID option:selected").attr('pre');
+    let pro = $("#PRO_ID option:selected").attr('pre');
+    let last_id = $("#last_id").val();
+    let code = "";
+    if (typeof type !== 'undefined') {
+        code += type + "-";
+    }
+    if (typeof pro !== 'undefined') {
+        code += pro + "-";
+    }
+    if (last_id) {
+        code += last_id;
+    }
+    if (code !== "") {
+        $("#DOC_CODIGO").val(code);
+    }
+});
+  //form update document
+  $(document).on("change", "#TIP_ID_MODAL, #PRO_ID_MODAL", function() {
+    let type = $("#TIP_ID_MODAL option:selected").attr('pre');
+    let pro = $("#PRO_ID_MODAL option:selected").attr('pre');
+    let numCode = $("#numCode").val();
+    let code = "";
+    if (typeof type !== 'undefined') {
+        code += type + "-";
+    }
+    if (typeof pro !== 'undefined') {
+        code += pro + "-";
+    }
+    if (last_id) {
+        code += numCode;
+    }
+    if (code !== "") {
+        $("#DOC_CODIGO_MODAL").val(code);
+    }
+});
+
   $(document).ready(function () {
     var table = $('#data').DataTable({
       responsive: true,
@@ -59,19 +98,6 @@ $(document).ready(function () {
     });
   
 
-  /////////////////////////////////////////////////////////
-
-$(document).on('click', '#ventas', function () {
-  var url = $(this).attr('data-url');
-  $.ajax({
-    url: url,
-    type: "POST",
-    success: function (datos) {
-      $("#contenedor").html(datos);
-      $("#modal").modal("show");
-    }
-  });
-});
 
 $(document).on('click', '#eliminar', function () {
   var url = $(this).attr('data-url');
@@ -85,35 +111,21 @@ $(document).on('click', '#eliminar', function () {
   });
 });
 
-
-    $(document).on("submit", "#registrarprod", function() {
-      event.preventDefault();
-      swal({
-          title: '¿Desea registrar esta capacitacion?',
-          text: 'Recuerde que despues puede eliminarla o editarla',
-          type: 'info',
-          icon: 'info',
-          buttons: {
-              confirm: {
-                  text: 'Registrar',
-                  className: 'btn btn-primary'
-              },
-
-              cancel: {
-                  visible: true,
-                  text: "Cancelar",
-                  className: 'btn btn-danger'
-              }
-
-          }
-      }).then((Delete) => {
-          if (Delete) {
-              $(this).submit();
-          }
-
-      });
-  });
-  
+$(document).on("click","#DeleteDocument button",function (event) {
+  event.preventDefault();
+  swal({
+    title: "¿Estás seguro?",
+    text: "Una vez eliminado, no podrás recuperar este documento.",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      $('#DeleteDocument').submit();
+    }
+  }); 
+});
+   
 })
 
 
