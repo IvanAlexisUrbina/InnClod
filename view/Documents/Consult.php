@@ -77,6 +77,7 @@
                                 echo "<td class='text-center'>  
                                       <button id='editar'data-toggle='tooltip'  title='Editar' class='btn btn-success btn-sm '  data-url='".getUrl("Documents","Documents","modalUpdate",array("DOC_ID" => $doc['DOC_ID']),"ajax") ."'><i class='fa fa-pencil'></i></button>
                                       <button id='eliminar' data-toggle='tooltip'  title='Eliminar' class='btn btn-danger btn-sm '  data-url='".getUrl("Documents","Documents","modalDelete",array("DOC_ID" => $doc['DOC_ID']),"ajax") ."'><i class='fa fa-trash'></i></button>
+                                      <button id='vista' data-toggle='tooltip'  title='Contenido' class='btn btn-secondary btn-sm '  data-url='".getUrl("Documents","Documents","modalView",array("DOC_ID" => $doc['DOC_ID']),"ajax") ."'><i class='fa fa-eye'></i></button>
                                     </button>
                                      </td>";
                                echo  "</tr>";
