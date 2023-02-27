@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shorcut icon" href="build/images/icono.ico">
 
-    <title>INNCLOD</title>
+    <title>InnClod</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
