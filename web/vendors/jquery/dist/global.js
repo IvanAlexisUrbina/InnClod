@@ -96,6 +96,19 @@ $(document).ready(function () {
         }
       });
     });
+    
+    $(document).on('click', '#vista', function () {
+      var url = $(this).attr('data-url');
+      var datos = $(this).val();
+      $.ajax({
+        url: url,
+        type: "POST",
+        success: function (datos) {
+          $("#contenedor").html(datos);
+          $("#modal").modal("show");
+        }
+      });
+    });
   
 
 
