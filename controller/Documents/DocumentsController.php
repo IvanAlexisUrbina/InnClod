@@ -100,6 +100,17 @@ Class DocumentsController
     redirect(getUrl("Documents","Documents","consultDocuments"));
     }
 
+    public function modalView(){
+      $obj=new DocumentsModel();
+      $doc_id=$_GET['DOC_ID'];
+      $sql="SELECT DOC_CONTENIDO
+            FROM doc_documento
+            WHERE DOC_ID= ? ";
+     $exe=$obj->consult($sql,array($doc_id));
+     $Document=mysqli_fetch_assoc($exe); 
+     $content=$Document['DOC_CONTENIDO']; 
+      include_once '../view/Documents/modalView.php';
+  }
 
 
 }
