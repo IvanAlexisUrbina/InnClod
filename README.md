@@ -17,6 +17,8 @@ Abre XAMPP Control Panel y asegúrate de que los servicios Apache y MySQL estén
 Abre tu navegador web y accede a la URL "http://localhost/phpmyadmin".<br>
 Crea una nueva base de datos llamada "pruebabd".<br>
 Importa el archivo "pruebabd.sql" que se encuentra en la carpeta "BD" del sistema.<br>
+
+USO DEL SISTEMA
 Para utilizar el sistema, sigue los siguientes pasos:<br>
 
 1-Abre tu navegador web y accede a la URL "http://localhost/InnClod".<br>
